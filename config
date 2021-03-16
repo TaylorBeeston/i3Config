@@ -160,8 +160,8 @@ set $ws9 "9:9 Misc"
 workspace $ws1 output eDP-1-1
 workspace $ws2 output eDP-1-1
 workspace $ws3 output eDP-1-1
-workspace $ws4 output HDMI-0
-workspace $ws5 output HDMI-0
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
 workspace $ws6 output HDMI-0
 workspace $ws7 output DP-0
 workspace $ws8 output DP-0
@@ -340,7 +340,7 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 # Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar.old/launch.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 # bar {
@@ -376,21 +376,21 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.focused          #969896 #1d1f21 #C5C8C6 #B4B7B4
+  client.focused_inactive #282a2e #282a2e #B4B7B4 #C5C8C6
+  client.unfocused        #282a2e #282a2e #B4B7B4 #C5C8C6
+  client.urgent           #CC6666 #C5C8C6 #1D1F21 #81A2BE
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
-  client.background       #2B2C2B
+  client.background       #1d1f21
 
 #############################
 ### settings for i3-gaps: ###
 #############################
 
 # Set inner/outer gaps
-gaps inner 12
-gaps outer 18
+gaps inner 5
+gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -440,3 +440,6 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+bindsym $mod+Shift+t exec i3-input -F 'workspace %s' -P 'Go to workspace: '
+bindsym $mod+Shift+m exec i3-input -F 'move container to workspace %s' -P 'Move to workspace: '
